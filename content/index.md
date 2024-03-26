@@ -1,42 +1,89 @@
----
-title: Blogging Like a Hacker
-description: This is the description
----
+# Simple Web Site Approach using Golang, markdown, tailwind, Alpine js and Templ
 
-# This is the header
+Welcome to our GitHub repository, where we're bringing simplicity and efficiency back to web development. Our journey began with a realization: creating simple web pages shouldn't require complex solutions. This repository is our exploration into making web development straightforward, focusing on static sites with minimal updates.
 
+## Why Not WordPress?
 
-:::{}
+For many, WordPress is the go-to solution for creating websites with a handful of pages and posts. However, it's like having a swimming pool guard at the Olympics: unnecessary for the skilled and an overkill for the simple needs. Our project seeks to avoid the overhead of databases for content that rarely changes, optimizing both development and page load times.
 
-## Header here
-:::{.flex .gap-4}
+## Introduction to Our Approach
 
-:::{.bg-surface-825 .px-4 .pb-4}
-### Hello
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vitae tortor condimentum lacinia quis vel eros donec. Massa sed elementum tempus egestas sed sed risus pretium quam.
+Inspired by the elegance of Nuxt and the simplicity of Vue, we found a way to streamline web development without sacrificing performance. Our goal was to develop a web application that is not only quick to develop but also exceptionally fast for the end-user.
 
-[Wanna know more?](/markup "Test article")
-:::
+### The Turning Point
 
-:::{.bg-surface-825 .px-4 .pb-4}
-### And some more
-Risus sed vulputate odio ut enim. Vitae nunc sed velit dignissim sodales ut eu sem integer. Enim ut sem viverra aliquet eget sit. Id diam maecenas ultricies mi eget mauris pharetra. Quam lacus suspendisse faucibus interdum posuere lorem ipsum dolor sit.
+While experimenting with a Nuxt-driven site, the resource consumption for a low-traffic scenario was notably high. This observation led us to rethink our approach and explore alternatives that maintain simplicity without the resource overhead.
 
-[The full story](/markup "Another test article")
-:::
-:::
-:::
+### Our Solution: A Golang Web App
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vitae tortor condimentum lacinia quis vel eros donec. Massa sed elementum tempus egestas sed sed risus pretium quam. Risus sed vulputate odio ut enim. Vitae nunc sed velit dignissim sodales ut eu sem integer. Enim ut sem viverra aliquet eget sit. Id diam maecenas ultricies mi eget mauris pharetra. Quam lacus suspendisse faucibus interdum posuere lorem ipsum dolor sit. Tincidunt ornare massa eget egestas purus. Volutpat blandit aliquam etiam erat velit scelerisque in dictum non. At volutpat diam ut venenatis tellus in. Purus faucibus ornare suspendisse sed. Lacus sed viverra tellus in hac habitasse. Feugiat scelerisque varius morbi enim. Aliquet bibendum enim facilisis gravida neque convallis. Elementum tempus egestas sed sed risus.
+We developed a lightweight web app in Golang, focusing on the following features:
 
-Volutpat est velit egestas dui id ornare arcu odio ut. Nullam ac tortor vitae purus faucibus ornare suspendisse. Arcu non odio euismod lacinia at. Aliquam faucibus purus in massa tempor nec feugiat nisl pretium. Suspendisse in est ante in nibh mauris cursus mattis molestie. Scelerisque eu ultrices vitae auctor eu. Mauris vitae ultricies leo integer malesuada nunc. Eget egestas purus viverra accumsan in nisl nisi. Laoreet id donec ultrices tincidunt arcu non sodales neque sodales. Netus et malesuada fames ac turpis egestas sed. Eget egestas purus viverra accumsan in nisl. Ultricies mi quis hendrerit dolor magna eget est lorem. Morbi leo urna molestie at elementum eu facilisis sed. Convallis aenean et tortor at risus viverra adipiscing at. Porttitor leo a diam sollicitudin tempor id eu. A scelerisque purus semper eget duis. Aliquet porttitor lacus luctus accumsan tortor. Duis convallis convallis tellus id.
+- **Content-driven:** Dynamically serves content based on the URI, checking for corresponding .md or .html files or folders.
+- **Integrated Templating and Markdown Rendering:** Utilizes Go's `http.ServeMux`, a powerful template engine, and Goldmark for markdown rendering.
+- **Performance:** Achieves a Google Lighthouse score of 100, ensuring top-tier user experience.
 
-Pellentesque eu tincidunt tortor aliquam nulla facilisi cras fermentum odio. A arcu cursus vitae congue mauris. Arcu non sodales neque sodales ut etiam. Viverra mauris in aliquam sem fringilla ut morbi tincidunt. Laoreet suspendisse interdum consectetur libero id faucibus nisl tincidunt eget. At tempor commodo ullamcorper a lacus vestibulum sed. Viverra justo nec ultrices dui sapien eget mi. Neque viverra justo nec ultrices dui sapien eget mi proin. At imperdiet dui accumsan sit amet nulla facilisi. Pharetra massa massa ultricies mi. Sed turpis tincidunt id aliquet. Posuere urna nec tincidunt praesent semper feugiat nibh sed pulvinar. Ultricies mi quis hendrerit dolor magna eget est. Eget sit amet tellus cras adipiscing enim eu turpis egestas. Mi proin sed libero enim sed faucibus turpis. Adipiscing elit duis tristique sollicitudin nibh sit amet.
+### Why Golang?
 
-Augue neque gravida in fermentum. Eget dolor morbi non arcu. Viverra orci sagittis eu volutpat odio facilisis mauris sit. Orci phasellus egestas tellus rutrum tellus. Nisi vitae suscipit tellus mauris a diam maecenas. Velit dignissim sodales ut eu sem integer vitae. Magna sit amet purus gravida. Molestie ac feugiat sed lectus vestibulum mattis ullamcorper velit. Quam adipiscing vitae proin sagittis nisl rhoncus mattis rhoncus urna. Sit amet nulla facilisi morbi tempus iaculis urna. Massa tincidunt nunc pulvinar sapien et. Non pulvinar neque laoreet suspendisse. Amet porttitor eget dolor morbi. Commodo nulla facilisi nullam vehicula ipsum a arcu cursus vitae. Risus quis varius quam quisque id diam. Aliquet nibh praesent tristique magna sit amet purus gravida. Molestie a iaculis at erat pellentesque adipiscing commodo elit. Quam id leo in vitae turpis massa sed. Viverra nam libero justo laoreet sit amet.
+Choosing Golang for this project was strategic. Its performance in terms of resource management is unparalleled, especially when compared to more traditional choices for web development in similar scenarios. Our app demonstrates that even for simple sites, efficiency doesn't have to be compromised.
 
-Mattis nunc sed blandit libero volutpat sed cras. Porttitor lacus luctus accumsan tortor posuere ac ut consequat semper. Dictum varius duis at consectetur lorem. Mi ipsum faucibus vitae aliquet nec ullamcorper sit amet risus. Facilisis leo vel fringilla est ullamcorper eget nulla facilisi. Fermentum odio eu feugiat pretium nibh ipsum. Turpis massa sed elementum tempus. Non tellus orci ac auctor. Integer enim neque volutpat ac tincidunt vitae semper quis lectus. Aliquam sem fringilla ut morbi tincidunt augue interdum velit euismod. Ut ornare lectus sit amet est placerat in egestas. Amet risus nullam eget felis eget nunc lobortis mattis aliquam. Pretium vulputate sapien nec sagittis aliquam. Pellentesque habitant morbi tristique senectus et. Amet commodo nulla facilisi nullam vehicula ipsum a arcu. Vestibulum lorem sed risus ultricies tristique nulla. Interdum velit laoreet id donec ultrices tincidunt arcu non. Ac feugiat sed lectus vestibulum mattis ullamcorper velit sed.
+## Features
 
-[link](http://example.com)
+- **Automatic Routing:** Based on file and folder names within the content directory.
+- **Markdown and HTML Support:** Flexibility in content creation. Using [goldmark markdown](https://github.com/yuin/goldmark).
+- **High Performance:** Optimized for speed, achieving perfect performance scores.
+- **Templ engine:** for a more natural way of writing markup. [Templ](https://github.com/a-h/templ).
+- **Tailwind CSS and Alpine.js:** For a modern, responsive design without the bloat.
 
-https://vg.no
+## Getting Started
+
+To set up this project locally and start contributing, follow these steps:
+
+1. **Clone the repository** to your local machine.
+
+    ```bash
+    git clone <repository-url>
+    ```
+
+2. **Install Golang** if it's not already installed on your system.
+
+3. **Environment Setup:**
+
+    - Copy `example.env` to `.env` in the project root. This file contains necessary environment variables for running the application.
+
+        ```bash
+        cp example.env .env
+        ```
+
+4. **Compile the Application:**
+
+    - Navigate to the project directory and run `go build` to compile the application.
+
+5. **Start the Application:**
+
+    - Run the compiled application and navigate to `localhost` in your web browser to view the site.
+
+6. **Working with CSS:**
+
+    - To automatically compile your Tailwind CSS, use the following command:
+
+        ```bash
+        npx tailwindcss -i ./src/input.css -o ./static/css/styles.css --watch
+        ```
+
+   This command watches for changes in your CSS and automatically recompiles the Tailwind output file.
+
+7. **Generating Templates:**
+
+    - For dynamic template generation, use the `templ generate --watch` command. This will monitor your template files for changes and automatically regenerate them as needed.
+
+        ```bash
+        templ generate --watch
+        ```
+
+## Contributing
+
+We welcome contributions from the community! Whether it's adding new features, improving documentation, or reporting issues, your input is valuable. Please refer to our CONTRIBUTING.md for guidelines on how to contribute effectively.
+
+## Conclusion
+
+Our journey has shown that simplicity in web development doesn't have to compromise on performance or scalability. By focusing on what truly matters, we've created a project that exemplifies efficiency and ease of use. We hope you join us in refining and expanding this approach.

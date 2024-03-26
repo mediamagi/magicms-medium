@@ -1140,6 +1140,10 @@ video {
   --tw-prose-td-borders: var(--tw-prose-invert-td-borders);
 }
 
+.static {
+  position: static;
+}
+
 .sticky {
   position: sticky;
 }
@@ -1174,12 +1178,16 @@ video {
   margin-bottom: 6rem;
 }
 
-.flex {
-  display: flex;
+.mt-2 {
+  margin-top: 0.5rem;
 }
 
-.h-8 {
-  height: 2rem;
+.mt-1 {
+  margin-top: 0.25rem;
+}
+
+.flex {
+  display: flex;
 }
 
 .max-w-2xl {
@@ -1232,9 +1240,9 @@ video {
   text-align: center;
 }
 
-.text-lg {
-  font-size: 1.125rem;
-  line-height: 1.75rem;
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
 }
 
 .text-xl {
@@ -1242,9 +1250,14 @@ video {
   line-height: 1.75rem;
 }
 
-.text-2xl {
-  font-size: 1.5rem;
-  line-height: 2rem;
+.text-lg {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
+.text-sm {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
 }
 
 .font-light {
@@ -1255,12 +1268,16 @@ video {
   font-style: italic;
 }
 
+.text-mypink {
+  color: var(--mypink);
+}
+
 .text-primary-text {
   color: rgb(var(--primary-text));
 }
 
-.text-mypink {
-  color: var(--mypink);
+.text-mybluelight {
+  color: var(--mybluelight);
 }
 
 .shadow-lg {
@@ -1269,19 +1286,22 @@ video {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
+.outline {
+  outline-style: solid;
+}
+
 .transition-all {
   transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
 }
 
-.prose-headings\:font-light :is(:where(h1, h2, h3, h4, h5, h6, th):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
-  font-weight: 300;
+.hover\:underline:hover {
+  text-decoration-line: underline;
 }
 
-.prose-h1\:text-5xl :is(:where(h1):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
-  font-size: 3rem;
-  line-height: 1;
+.prose-headings\:font-light :is(:where(h1, h2, h3, h4, h5, h6, th):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
+  font-weight: 300;
 }
 
 .prose-h1\:text-7xl :is(:where(h1):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
@@ -1297,4 +1317,20 @@ video {
 .prose-h3\:text-xl :is(:where(h3):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
   font-size: 1.25rem;
   line-height: 1.75rem;
+}
+
+.prose-a\:text-mybluelight :is(:where(a):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
+  color: var(--mybluelight);
+}
+
+@media (min-width: 768px) {
+  .md\:text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+
+  .md\:text-base {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
 }
