@@ -2,6 +2,7 @@
 
 Welcome to our GitHub repository, where we're bringing simplicity and efficiency back to web development. Our journey began with a realization: creating simple web pages shouldn't require complex solutions. This repository is our exploration into making web development straightforward, focusing on static sites with minimal updates.
 
+Check out the demo [here].(https://magicms-medium.hakonleinan.com/)
 ## Why Not WordPress?
 
 For many, WordPress is the go-to solution for creating websites with a handful of pages and posts. However, it's like having a swimming pool guard at the Olympics: unnecessary for the skilled and an overkill for the simple needs. Our project seeks to avoid the overhead of databases for content that rarely changes, optimizing both development and page load times.
