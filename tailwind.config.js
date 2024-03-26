@@ -1,0 +1,67 @@
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: ["./src/**/*.{html,js}", "./templates/**/*.{templ,html,js}", "./content/**/*.{md,html}"],
+  theme: {
+    fontFamily: {
+      'sans': ['Fira Sans'],
+      'display': ['Fira Sans'],
+      'body': ['Fira Sans'],
+    },
+    extend: {
+      opacity: {
+        '15': '0.15',
+        '30': '0.30',
+        '40': '0.40',
+        '65': '0.65',
+        '80': '0.80',
+      },
+      fontSize: {
+        icon: ['32px', '32px'],
+      },
+      colors: {
+        'currentColor': 'rgb(var(--primary-text))',
+        'primary-text': 'rgb(var(--primary-text))',
+        'primary-50': 'rgb(var(--primary-50))',
+        'primary-100': 'rgb(var(--primary-100))',
+        'primary-200': 'rgb(var(--primary-200))',
+        'primary-300': 'rgb(var(--primary-300))',
+        'primary-400': 'rgb(var(--primary-400))',
+        'primary-500': 'rgb(var(--primary-500))',
+        'primary-600': 'rgb(var(--primary-600))',
+        'primary-700': 'rgb(var(--primary-700))',
+        'primary-800': 'rgb(var(--primary-800))',
+        'primary-900': 'rgb(var(--primary-900))',
+        'primary-950': 'rgb(var(--primary-950))',
+        'surface-0': 'rgb(var(--surface-0))',
+        'surface-50': 'rgb(var(--surface-50))',
+        'surface-100': 'rgb(var(--surface-100))',
+        'surface-200': 'rgb(var(--surface-200))',
+        'surface-300': 'rgb(var(--surface-300))',
+        'surface-400': 'rgb(var(--surface-400))',
+        'surface-500': 'rgb(var(--surface-500))',
+        'surface-600': 'rgb(var(--surface-600))',
+        'surface-650': 'rgb(var(--surface-650))',
+        'surface-700': 'rgb(var(--surface-700))',
+        'surface-725': 'rgb(var(--surface-725))',
+        'surface-750': 'rgb(var(--surface-750))',
+        'surface-800': 'rgb(var(--surface-800))',
+        'surface-825': 'rgb(var(--surface-825))',
+        'surface-850': 'rgb(var(--surface-850))',
+        'surface-900': 'rgb(var(--surface-900))',
+        'surface-950': 'rgb(var(--surface-950))',
+        'mygreen': 'var(--mygreen)',
+        'myblue': 'var(--myblue)',
+        'mybluelight': 'var(--mybluelight)',
+        'mypink': 'var(--mypink)',
+        'myyellow': 'var(--myyellow)',
+        'myorange': 'var(--myorange)',
+        'myred': 'var(--myred)',
+        'form-outlined': 'var(--mybluelight)',
+      }
+    },
+  },
+  plugins: [
+    require('@tailwindcss/typography'),
+  ],
+}
+

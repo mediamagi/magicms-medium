@@ -1,0 +1,42 @@
+:root {
+    --mygreen: #55e88b;
+    --myblue: #5568E8;
+    --mybluelight: #55B2E8;
+    --mypink: #E855B2;
+    --myyellow: #E8D555;
+    --myorange: #E4571B;
+    --myred: #E41B44;
+    --primary-text: 240 240 240;
+    --primary-50: 236 253 245;
+    --primary-100: 209 250 229;
+    --primary-200: 167 243 208;
+    --primary-300: 110 231 183;
+    --primary-400: 52 211 153;
+    --primary-500: 16 185 129;
+    --primary-600: 5 150 105;
+    --primary-700: 4 120 87;
+    --primary-800: 6 95 70;
+    --primary-900: 4 78 56;
+    --primary-950: 2 44 34;
+    --surface-0: 255 255 255;
+    --surface-50: 245 246 248;
+    --surface-100: 226 229 233;
+    --surface-200: 206 212 219;
+    --surface-300: 187 194 204;
+    --surface-400: 148 160 175;
+    --surface-500: 95 108 126;
+    --surface-600: 49 56 66;
+    --surface-650: 41 50 58;
+    --surface-700: 38 44 51;
+    --surface-725: 35 40 47;
+    --surface-750: 33 37 42;
+    --surface-800: 27 31 36;
+    --surface-825: 24 28 32;
+    --surface-850: 21 25 29;
+    --surface-900: 16 19 22;
+    --surface-950: 5 6 7;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
