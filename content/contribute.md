@@ -1,4 +1,4 @@
-# Contributing to this project
+# Contribute to this project
 
 First off, thank you for considering contributing to this project! It's people like you that make the open source community such a fantastic place to learn, inspire, and create. Any contributions you make will benefit everybody else and are greatly appreciated.
 
