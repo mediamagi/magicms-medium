@@ -32,11 +32,12 @@ GqNYJAgFDEpQAAAzmxafI4vZWwAAAABJRU5ErkJggg=="/>
       <nav
           class="flex justify-between container max-w-5xl mx-auto"
           @scroll.window="atTop = (window.pageYOffset < 50) ? false: true"
+          aria-label="Main navigation"
       >
-        <a href="/" class="italic text-lg md:text-2xl font-light">Gonuxt demo</a>
+        <a href="/" class="italic text-lg md:text-2xl font-light" title="Home">Gonuxt demo</a>
         <div x-data="{ toggleMenu: false }">
           <div class="md:hidden">
-            <button @click="toggleMenu = !toggleMenu" class="z-50 relative">
+            <button @click="toggleMenu = !toggleMenu" class="z-50 relative" aria-controls="menu">
               <template x-if="!toggleMenu">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -59,6 +60,8 @@ GqNYJAgFDEpQAAAzmxafI4vZWwAAAABJRU5ErkJggg=="/>
           <ul
               class="text-mybluelight font-light gap-4 md:text-base mt-1 p-8 flex-col md:flex-row md:p-0 md:flex fixed md:relative text-2xl md:flex top-0 bottom-0 left-0 right-0 z-20 md:z-0"
               :class="{'flex bg-surface-800': toggleMenu, 'hidden': !toggleMenu}"
+              id="menu"
+              aria-label="Secondary navigation"
           >
             <li>
               <a href="/" title="Home" class="hover:underline ">Home</a>
@@ -74,7 +77,7 @@ GqNYJAgFDEpQAAAzmxafI4vZWwAAAABJRU5ErkJggg=="/>
             </li>
             <li>
               <a href="https://github.com/mediamagi/magicms-medium" target="_blank" title="Github repo"
-                 class="hover:underline">Github</a>
+                 class="hover:underline" rel="noopener noreferrer">Github</a>
             </li>
           </ul>
         </div>
@@ -87,8 +90,8 @@ GqNYJAgFDEpQAAAzmxafI4vZWwAAAABJRU5ErkJggg=="/>
     >@templ.Raw( content )
     </article>
   </div>
-  <footer class="text-center py-8 bg-surface-850 text-primary-text font-light text-sm md:text-2xl">
-    Copyright ©2024 <a class="hover:underline" href="https://hakonleinan.com" target="_blank">Håkon Leinan</a>. All rights
+  <footer class="text-center py-8 bg-surface-850 text-primary-text font-thin text-sm md:text-2xl">
+    Copyright ©2024 <a class="hover:underline" href="https://hakonleinan.com" target="_blank" rel="noopener noreferrer">Håkon Leinan</a>. All rights
     reserved.
   </footer>
 </body>
