@@ -10,13 +10,15 @@ templ Page(content string, title string, description string) {
 iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAAMFBMVEU0OkArMjhobHEoPUPFEBIu
 O0L+AAC2FBZ2JyuNICOfGx7xAwTjCAlCNTvVDA1aLzQ3COjMAAAAVUlEQVQI12NgwAaCDSA0888G
 CItjn0szWGBJTVoGSCjWs8TleQCQYV95evdxkFT8Kpe0PLDi5WfKd4LUsN5zS1sKFolt8bwAZrCa
-GqNYJAgFDEpQAAAzmxafI4vZWwAAAABJRU5ErkJggg==" />
+GqNYJAgFDEpQAAAzmxafI4vZWwAAAABJRU5ErkJggg=="/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="description" content={description}/>
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"/>
 
 </head>
 <body class="bg-surface-800 text-primary-text">
@@ -31,33 +33,62 @@ GqNYJAgFDEpQAAAzmxafI4vZWwAAAABJRU5ErkJggg==" />
           @scroll.window="atTop = (window.pageYOffset < 50) ? false: true"
       >
         <a href="/" class="italic text-lg md:text-2xl font-light">Gonuxt demo</a>
-        <ul class="text-mybluelight font-light flex gap-4 text-sm md:text-base mt-1">
-          <li>
-            <a href="/" title="Home" class="hover:underline ">Home</a>
-          </li>
-          <li>
-            <a href="/sub" title="Sub index" class="hover:underline ">Sub index</a>
-          </li>
-          <li>
-            <a href="/sub/article" title="Article" class="hover:underline ">Article</a>
-          </li>
-          <li>
-            <a href="/contribute" title="Contribute" class="hover:underline">Contribute</a>
-          </li>
-          <li>
-            <a href="https://github.com/mediamagi/magicms-medium" target="_blank" title="Github repo" class="hover:underline">Github</a>
-          </li>
-        </ul>
+        <div x-data="{ toggleMenu: false }">
+          <div class="md:hidden">
+            <button @click="toggleMenu = !toggleMenu" class="z-50 relative">
+              <template x-if="!toggleMenu">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                     class="feather feather-menu stroke-mybluelight text-default-text">
+                  <line x1="3" y1="12" x2="21" y2="12"></line>
+                  <line x1="3" y1="6" x2="21" y2="6"></line>
+                  <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+              </template>
+              <template x-if="toggleMenu">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                     class="feather feather-x stroke-mybluelight">
+                  <line x1="18" y1="6" x2="6" y2="18"></line>
+                  <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+              </template>
+            </button>
+          </div>
+          <ul
+              class="text-mybluelight font-light gap-4 md:text-base mt-1 p-8 flex-col md:flex-row md:p-0 md:flex fixed md:relative text-2xl md:flex top-0 bottom-0 left-0 right-0 z-20 md:z-0"
+              :class="{'flex bg-surface-800': toggleMenu, 'hidden': !toggleMenu}"
+          >
+            <li>
+              <a href="/" title="Home" class="hover:underline ">Home</a>
+            </li>
+            <li>
+              <a href="/sub" title="Sub index" class="hover:underline ">Sub index</a>
+            </li>
+            <li>
+              <a href="/sub/article" title="Article" class="hover:underline ">Article</a>
+            </li>
+            <li>
+              <a href="/contribute" title="Contribute" class="hover:underline">Contribute</a>
+            </li>
+            <li>
+              <a href="https://github.com/mediamagi/magicms-medium" target="_blank" title="Github repo"
+                 class="hover:underline">Github</a>
+            </li>
+          </ul>
+        </div>
       </nav>
     </header>
   </div>
   <div class="mx-4">
     <article
-        class="container mx-auto max-w-2xl prose prose-invert mb-24 prose-headings:font-light prose-h1:text-7xl prose-h2:text-4xl prose-h3:text-xl prose-a:text-mybluelight"
-    >@templ.Raw( content )</article>
+        class="container mx-auto max-w-2xl prose prose-invert mb-24 prose-headings:font-light md:prose-h1:text-7xl md:prose-h2:text-4xl md:prose-h3:text-xl prose-a:text-mybluelight"
+    >@templ.Raw( content )
+    </article>
   </div>
-  <footer class="text-center py-8 bg-surface-850 text-primary-text font-light text-xl">
-    Copyright ©2024 <a class="text-mypink" href="https://hakonleinan.com" target="_blank">Håkon Leinan</a>. All rights reserved.
+  <footer class="text-center py-8 bg-surface-850 text-primary-text font-light text-sm md:text-xl">
+    Copyright ©2024 <a class="text-mypink" href="https://hakonleinan.com" target="_blank">Håkon Leinan</a>. All rights
+    reserved.
   </footer>
 </body>
 </html>

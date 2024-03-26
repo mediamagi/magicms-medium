@@ -1140,8 +1140,24 @@ video {
   --tw-prose-td-borders: var(--tw-prose-invert-td-borders);
 }
 
+.visible {
+  visibility: visible;
+}
+
 .static {
   position: static;
+}
+
+.fixed {
+  position: fixed;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.relative {
+  position: relative;
 }
 
 .sticky {
@@ -1158,6 +1174,26 @@ video {
 
 .top-0 {
   top: 0px;
+}
+
+.bottom-0 {
+  bottom: 0px;
+}
+
+.z-10 {
+  z-index: 10;
+}
+
+.z-20 {
+  z-index: 20;
+}
+
+.z-30 {
+  z-index: 30;
+}
+
+.z-50 {
+  z-index: 50;
 }
 
 .mx-4 {
@@ -1190,12 +1226,20 @@ video {
   display: flex;
 }
 
+.hidden {
+  display: none;
+}
+
 .max-w-2xl {
   max-width: 42rem;
 }
 
 .max-w-5xl {
   max-width: 64rem;
+}
+
+.flex-col {
+  flex-direction: column;
 }
 
 .justify-between {
@@ -1216,6 +1260,14 @@ video {
 
 .bg-surface-850 {
   background-color: rgb(var(--surface-850));
+}
+
+.stroke-mybluelight {
+  stroke: var(--mybluelight);
+}
+
+.p-8 {
+  padding: 2rem;
 }
 
 .py-8 {
@@ -1240,6 +1292,11 @@ video {
 .text-xl {
   font-size: 1.25rem;
   line-height: 1.75rem;
+}
+
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
 }
 
 .font-light {
@@ -1306,6 +1363,30 @@ video {
 }
 
 @media (min-width: 768px) {
+  .md\:relative {
+    position: relative;
+  }
+
+  .md\:z-0 {
+    z-index: 0;
+  }
+
+  .md\:flex {
+    display: flex;
+  }
+
+  .md\:hidden {
+    display: none;
+  }
+
+  .md\:flex-row {
+    flex-direction: row;
+  }
+
+  .md\:p-0 {
+    padding: 0px;
+  }
+
   .md\:text-2xl {
     font-size: 1.5rem;
     line-height: 2rem;
@@ -1314,5 +1395,25 @@ video {
   .md\:text-base {
     font-size: 1rem;
     line-height: 1.5rem;
+  }
+
+  .md\:text-xl {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+
+  .md\:prose-h1\:text-7xl :is(:where(h1):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
+    font-size: 4.5rem;
+    line-height: 1;
+  }
+
+  .md\:prose-h2\:text-4xl :is(:where(h2):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+
+  .md\:prose-h3\:text-xl :is(:where(h3):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
   }
 }
