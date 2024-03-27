@@ -85,10 +85,12 @@ To set up this project locally and start contributing, follow these steps:
 
 To add metadata such as a title or description to your Markdown files, you can use the YAML front matter block at the beginning of the file. Here's an example:
 
+```yaml
 ---
 title: This is the title
 description: This is the description
 ---
+```
 
 You can then access these meta fields in your `main.go` file using the following syntax:
 
