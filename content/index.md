@@ -5,7 +5,7 @@ description: Welcome to our GitHub repository, where we're bringing simplicity a
 
 # 🚀 Streamline Website Creation: Golang, Markdown, Tailwind, Alpine.js, Templ – Inspired by Nuxt Content
 
-Welcome to our GitHub repository, where we're bringing simplicity and efficiency back to web development. Our journey began with a realization: creating simple web pages shouldn't require complex solutions. This repository is our exploration into making web development straightforward, focusing on static sites with minimal updates.
+Where we're bringing simplicity and efficiency back to web development. Our journey began with a realization: creating simple web pages shouldn't require complex solutions. This project is our exploration into making web development straightforward, focusing on static sites with minimal updates.
 
 ## Why Not WordPress?
 
@@ -84,11 +84,3 @@ To set up this project locally and start contributing, follow these steps:
         ```bash
         templ generate --watch
         ```
-
-## Contributing
-
-We welcome contributions from the community! Whether it's adding new features, improving documentation, or reporting issues, your input is valuable. Please refer to our CONTRIBUTING.md for guidelines on how to contribute effectively.
-
-## Conclusion
-
-Our journey has shown that simplicity in web development doesn't have to compromise on performance or scalability. By focusing on what truly matters, we've created a project that exemplifies efficiency and ease of use. We hope you join us in refining and expanding this approach.
