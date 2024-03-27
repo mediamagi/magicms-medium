@@ -244,5 +244,5 @@ func getPort() string {
 	if port := os.Getenv("PORT"); port != "" {
 		return ":" + port
 	}
-	return ":8088"
+	return ":3000"
 }

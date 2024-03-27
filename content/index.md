@@ -65,9 +65,9 @@ To set up this project locally and start contributing, follow these steps:
 
    - Navigate to the project directory and run `go run main.no` to compile and run the application.
 
-5. **Start the Application:**
+5. **View the output:**
 
-   - Run the compiled application and navigate to `localhost:3000` in your web browser to view the site.
+   - Navigate to `localhost:3000` in your web browser to view the site. It will look for an index.md or index.html in the content folder to render. Make sure you have an index file. 
 
 6. **Working with CSS:**
 

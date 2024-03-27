@@ -61,7 +61,7 @@ To set up this project locally and start contributing, follow these steps:
 
 5. **View the site:**
 
-    - Navigate to `localhost:3000` in your web browser to view the site.
+    - Navigate to `localhost:3000` in your web browser to view the site. It will look for index.md or index.html in the content folder.
 
 6. **Working with CSS:**
 
