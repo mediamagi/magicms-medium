@@ -138,3 +138,21 @@ If you have a related document that should also be accessible on its own, simply
 relation: termsOfService.html
 ---
 ```
+
+Render meta data in an HTML file:
+```html
+<!-- Meta:
+  title: Example Title
+  description: Example Description
+  relation: _ar.md
+-->
+```
+
+If the related file is inside a folder, add it like this:
+
+```html
+<!-- Meta:
+  relation: foldername/_ar.md
+-->
+```
+

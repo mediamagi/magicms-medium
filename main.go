@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bufio"
 	"bytes"
 	"log"
 	"net/http"
@@ -17,6 +18,12 @@ import (
 	"github.com/yuin/goldmark/renderer/html"
 	"mvdan.cc/xurls/v2"
 )
+
+type MetaData struct {
+	Title       string
+	Description string
+	Relation    string // Add this line to include relation information.
+}
 
 func createMarkdownParser() goldmark.Markdown {
 	return goldmark.New(
@@ -67,7 +74,6 @@ func serveRobotsTxt(w http.ResponseWriter, r *http.Request) {
 func serveContent(w http.ResponseWriter, r *http.Request) {
 	path := "./content" + r.URL.Path
 
-	// Prevent serving files or directories starting with '_'
 	if strings.HasPrefix(filepath.Base(path), "_") {
 		http.NotFound(w, r)
 		return
@@ -88,6 +94,44 @@ func serveContent(w http.ResponseWriter, r *http.Request) {
 
 	if fileExtension == ".md" {
 		renderMarkdown(file, w, r, filePath)
+	} else if fileExtension == ".html" {
+		metaData, err := extractHTMLMeta(file)
+		if err != nil {
+			log.Printf("Error extracting HTML meta: %v", err)
+			http.Error(w, "Internal Server Error", http.StatusInternalServerError)
+			return
+		}
+
+		relatedContent := ""
+		if metaData.Relation != "" {
+			relationPath := filepath.Join("content", metaData.Relation)
+			relatedFilePath, relatedFileExtension := resolvePath(relationPath)
+			if relatedFilePath != "" {
+				relatedFile, err := os.ReadFile(relatedFilePath)
+				if err != nil {
+					log.Printf("Error reading related file %s: %v", relatedFilePath, err)
+					// Decide how to handle this error; for now, we'll just log it.
+				} else {
+					// Process the related file based on its type.
+					if relatedFileExtension == ".md" {
+						var relationBuf bytes.Buffer
+						if err := md.Convert(relatedFile, &relationBuf, parser.WithContext(parser.NewContext())); err != nil {
+							log.Printf("Error converting markdown: %v", err)
+						} else {
+							relatedContent = relationBuf.String()
+						}
+					} else if relatedFileExtension == ".html" {
+						// Directly use the HTML content, or further process as needed.
+						relatedContent = string(relatedFile)
+					}
+				}
+			}
+		}
+
+		// Example of how you might combine the main content with related content.
+		// Modify according to how your templates.Page function and templates are structured.
+		combinedContent := string(file) + "\n" + relatedContent
+		templates.Page(combinedContent, metaData.Title, metaData.Description).Render(r.Context(), w)
 	} else {
 		templates.Page(string(file), "Title", "Description").Render(r.Context(), w)
 	}
@@ -158,6 +202,51 @@ func checkIfFileExtensionExists(path string) (string, string) {
 		}
 	}
 	return "", ""
+}
+
+func extractHTMLMeta(file []byte) (*MetaData, error) {
+	scanner := bufio.NewScanner(bytes.NewReader(file))
+	metaData := &MetaData{}
+	insideMetaBlock := false
+
+	for scanner.Scan() {
+		line := scanner.Text()
+
+		// Detect the start of the Meta block.
+		if strings.Contains(line, "<!-- Meta:") {
+			insideMetaBlock = true
+			continue
+		}
+
+		// Detect the end of the Meta block.
+		if strings.Contains(line, "-->") && insideMetaBlock {
+			break // Exit the loop once the end of the meta block is reached.
+		}
+
+		if insideMetaBlock {
+			// Process each line within the meta block to extract title, description, and relation.
+			parts := strings.SplitN(line, ":", 2)
+			if len(parts) == 2 {
+				key := strings.TrimSpace(parts[0])
+				value := strings.TrimSpace(parts[1])
+
+				switch key {
+				case "title":
+					metaData.Title = value
+				case "description":
+					metaData.Description = value
+				case "relation":
+					metaData.Relation = value // Assuming you have a Relation field in your MetaData struct.
+				}
+			}
+		}
+	}
+
+	if err := scanner.Err(); err != nil {
+		return nil, err
+	}
+
+	return metaData, nil
 }
 
 func getPort() string {

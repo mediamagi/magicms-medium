@@ -1,3 +1,4 @@
+<p>(The rest of the content is injected as a related file to index.md)</p>
 <h2>Adding meta title and description in the markdown file</h2>
 <pre><code>---
 title: This is the title
@@ -39,4 +40,18 @@ relation: _contactForm.html
 <pre><code>---
 relation: termsOfService.html
 ---
+</code></pre>
+
+<h4>Render meta data in a html file:</h4>
+<pre><code>&lt;!-- Meta:
+  title: Example Title
+  description: Example Description
+  relation: _ar.md
+--&gt;
+</code></pre>
+<p>If the related file is inside a folder, add it like this</p>
+<pre><code>
+&lt;!-- Meta:
+  relation: foldername/_ar.md
+--&gt;
 </code></pre>
