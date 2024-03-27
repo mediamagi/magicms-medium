@@ -39,6 +39,10 @@
     --surface-950: 5 6 7;
 }
 
+.radial-gradient-top {
+    background: radial-gradient(circle at top, rgb(var(--surface-700)) 2%, transparent 30%);
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
