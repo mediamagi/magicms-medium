@@ -81,10 +81,58 @@ To set up this project locally and start contributing, follow these steps:
         templ generate --watch
         ```
 
-## Contributing
+# Adding Meta Title and Description in the Markdown File
 
-We welcome contributions from the community! Whether it's adding new features, improving documentation, or reporting issues, your input is valuable. Please refer to our CONTRIBUTING.md for guidelines on how to contribute effectively.
+To add metadata such as a title or description to your Markdown files, you can use the YAML front matter block at the beginning of the file. Here's an example:
 
-## Conclusion
+---
+title: This is the title
+description: This is the description
+---
 
-Our journey has shown that simplicity in web development doesn't have to compromise on performance or scalability. By focusing on what truly matters, we've created a project that exemplifies efficiency and ease of use. We hope you join us in refining and expanding this approach.
+You can then access these meta fields in your `main.go` file using the following syntax:
+
+```go
+metaData["{field_name}"].(string)
+```
+
+## Handling Related Content in Markdown Files
+
+Our platform supports associating related content with Markdown documents through the use of a `relation` field within the document's front matter. This allows for the seamless integration of additional resources, enhancing the richness and utility of your content.
+
+### Specifying Related Content
+
+To specify related content, include the `relation` field in the YAML front matter of your Markdown document. The related content must be located within the same directory as the referring document. Here’s how you can specify a related HTML file:
+
+```yaml
+---
+relation: _additionalInfo.html
+---
+```
+
+### Naming Conventions and Access
+
+- Files named with a leading underscore (`_`) are treated specially. They are meant to be included as part of another document and are not directly accessible via a URL. This convention helps in organizing your content and keeping auxiliary files hidden.
+- If you wish for the related file to be accessible as standalone content, do not prefix the filename with `_`. This makes the file directly accessible through its URL, allowing it to serve as both related content and a standalone resource.
+
+### Examples
+
+#### Including an HTML File
+
+For Markdown documents that require supplementary HTML content to be displayed alongside the Markdown-rendered content, specify the HTML file using the `relation` field. The content of this file will be rendered in place when the Markdown document is accessed. Remember, if the filename starts with `_`, the content is intended for inclusion and not direct access:
+
+```yaml
+---
+relation: _contactForm.html
+---
+```
+
+#### Making Related Content Accessible
+
+If you have a related document that should also be accessible on its own, simply ensure it does not begin with `_`. This is useful for supplementary guides, forms, or any content that serves a dual purpose—both as standalone and as related content.
+
+```yaml
+---
+relation: termsOfService.html
+---
+```
