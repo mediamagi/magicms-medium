@@ -22,7 +22,7 @@ import (
 type MetaData struct {
 	Title       string
 	Description string
-	Relation    string // Add this line to include relation information.
+	Relation    string
 }
 
 func createMarkdownParser() goldmark.Markdown {
@@ -110,9 +110,7 @@ func serveContent(w http.ResponseWriter, r *http.Request) {
 				relatedFile, err := os.ReadFile(relatedFilePath)
 				if err != nil {
 					log.Printf("Error reading related file %s: %v", relatedFilePath, err)
-					// Decide how to handle this error; for now, we'll just log it.
 				} else {
-					// Process the related file based on its type.
 					if relatedFileExtension == ".md" {
 						var relationBuf bytes.Buffer
 						if err := md.Convert(relatedFile, &relationBuf, parser.WithContext(parser.NewContext())); err != nil {
@@ -121,15 +119,12 @@ func serveContent(w http.ResponseWriter, r *http.Request) {
 							relatedContent = relationBuf.String()
 						}
 					} else if relatedFileExtension == ".html" {
-						// Directly use the HTML content, or further process as needed.
 						relatedContent = string(relatedFile)
 					}
 				}
 			}
 		}
 
-		// Example of how you might combine the main content with related content.
-		// Modify according to how your templates.Page function and templates are structured.
 		combinedContent := string(file) + "\n" + relatedContent
 		templates.Page(combinedContent, metaData.Title, metaData.Description).Render(r.Context(), w)
 	} else {
@@ -155,8 +150,7 @@ func renderMarkdown(file []byte, w http.ResponseWriter, r *http.Request, filePat
 	renderString := buf.String()
 
 	if relation != "" {
-		// Assuming 'relation' is a relative path from the "content" folder
-		relationPath := filepath.Join("content", relation) // Ensure it points correctly within the "content" folder
+		relationPath := filepath.Join("content", relation)
 		resolvedPath, fileExtension := resolvePath(relationPath)
 		if resolvedPath != "" {
 			relationFile, err := os.ReadFile(resolvedPath)
@@ -171,7 +165,6 @@ func renderMarkdown(file []byte, w http.ResponseWriter, r *http.Request, filePat
 				md.Convert(relationFile, &relationBuf, parser.WithContext(parser.NewContext()))
 				renderString += "\n" + relationBuf.String()
 			} else if fileExtension == ".html" {
-				// Append HTML content directly.
 				renderString += "\n" + string(relationFile)
 			}
 		}
@@ -218,13 +211,11 @@ func extractHTMLMeta(file []byte) (*MetaData, error) {
 			continue
 		}
 
-		// Detect the end of the Meta block.
 		if strings.Contains(line, "-->") && insideMetaBlock {
-			break // Exit the loop once the end of the meta block is reached.
+			break
 		}
 
 		if insideMetaBlock {
-			// Process each line within the meta block to extract title, description, and relation.
 			parts := strings.SplitN(line, ":", 2)
 			if len(parts) == 2 {
 				key := strings.TrimSpace(parts[0])
@@ -236,7 +227,7 @@ func extractHTMLMeta(file []byte) (*MetaData, error) {
 				case "description":
 					metaData.Description = value
 				case "relation":
-					metaData.Relation = value // Assuming you have a Relation field in your MetaData struct.
+					metaData.Relation = value
 				}
 			}
 		}
