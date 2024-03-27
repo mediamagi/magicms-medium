@@ -32,7 +32,7 @@ Choosing Golang for this project was strategic. Its performance in terms of reso
 - **Automatic Routing:** Based on file and folder names within the content directory.
 - **Markdown and HTML Support:** Flexibility in content creation. Using [goldmark markdown](https://github.com/yuin/goldmark)
 - **High Performance:** Optimized for speed, achieving perfect performance scores.
-- - **Templ engine:** for a more natural way of writing markup. [Templ](https://github.com/a-h/templ)
+- **Templ engine:** for a more natural way of writing markup. [Templ](https://github.com/a-h/templ)
 - **Tailwind CSS and Alpine.js:** For a modern, responsive design without the bloat.
 
 ## Getting Started
