@@ -1,3 +1,15 @@
+<h2>Adding meta title and description in the markdown file</h2>
+<pre><code>---
+title: This is the title
+description: This is the description
+---
+</code></pre>
+
+<p>Add the meta fields you need, and grab them using the following syntaxt in main.go</p>
+<pre><code>
+  metaData["{field_name}"].(string)
+</code></pre>
+
 <h2>Handling Related Content in Markdown Files</h2>
 <p>Our platform supports associating related content with Markdown documents through the use of a <code>relation</code> field within the document's front matter. This allows for the seamless integration of additional resources, enhancing the richness and utility of your content.</p>
 
