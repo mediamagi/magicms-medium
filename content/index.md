@@ -1,6 +1,7 @@
 ---
 title: Streamline Website Creation - Golang, Markdown, Tailwind, Alpine.js and Templ
 description: Welcome to our GitHub repository, where we're bringing simplicity and efficiency back to web development.
+relation: _index_relation.html
 ---
 
 # 🚀 Streamline Website Creation: Golang, Markdown, Tailwind, Alpine.js, Templ 

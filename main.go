@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
+	"strings"
 
 	"github.com/mediamagi/magicms/templates"
 	fences "github.com/stefanfritsch/goldmark-fences"
@@ -65,8 +66,14 @@ func serveRobotsTxt(w http.ResponseWriter, r *http.Request) {
 
 func serveContent(w http.ResponseWriter, r *http.Request) {
 	path := "./content" + r.URL.Path
-	filePath, fileExtension := resolvePath(path)
 
+	// Prevent serving files or directories starting with '_'
+	if strings.HasPrefix(filepath.Base(path), "_") {
+		http.NotFound(w, r)
+		return
+	}
+
+	filePath, fileExtension := resolvePath(path)
 	if filePath == "" {
 		http.NotFound(w, r)
 		return
@@ -80,13 +87,13 @@ func serveContent(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if fileExtension == ".md" {
-		renderMarkdown(file, w, r)
+		renderMarkdown(file, w, r, filePath)
 	} else {
 		templates.Page(string(file), "Title", "Description").Render(r.Context(), w)
 	}
 }
 
-func renderMarkdown(file []byte, w http.ResponseWriter, r *http.Request) {
+func renderMarkdown(file []byte, w http.ResponseWriter, r *http.Request, filePath string) {
 	var buf bytes.Buffer
 	context := parser.NewContext()
 
@@ -99,8 +106,34 @@ func renderMarkdown(file []byte, w http.ResponseWriter, r *http.Request) {
 	metaData := meta.Get(context)
 	title, _ := metaData["title"].(string)
 	description, _ := metaData["description"].(string)
+	relation, _ := metaData["relation"].(string)
 
-	templates.Page(buf.String(), title, description).Render(r.Context(), w)
+	renderString := buf.String()
+
+	if relation != "" {
+		// Assuming 'relation' is a relative path from the "content" folder
+		relationPath := filepath.Join("content", relation) // Ensure it points correctly within the "content" folder
+		resolvedPath, fileExtension := resolvePath(relationPath)
+		if resolvedPath != "" {
+			relationFile, err := os.ReadFile(resolvedPath)
+			if err != nil {
+				log.Printf("Error reading relation file %s: %v", resolvedPath, err)
+				http.Error(w, "Internal Server Error", http.StatusInternalServerError)
+				return
+			}
+
+			if fileExtension == ".md" {
+				var relationBuf bytes.Buffer
+				md.Convert(relationFile, &relationBuf, parser.WithContext(parser.NewContext()))
+				renderString += "\n" + relationBuf.String()
+			} else if fileExtension == ".html" {
+				// Append HTML content directly.
+				renderString += "\n" + string(relationFile)
+			}
+		}
+	}
+
+	templates.Page(renderString, title, description).Render(r.Context(), w)
 }
 
 func resolvePath(path string) (string, string) {
@@ -119,8 +152,9 @@ func checkIndexFiles(dirPath string) (string, string) {
 
 func checkIfFileExtensionExists(path string) (string, string) {
 	for _, ext := range []string{".html", ".md"} {
-		if _, err := os.Stat(path + ext); err == nil {
-			return path + ext, ext
+		fullPath := path + ext
+		if _, err := os.Stat(fullPath); err == nil {
+			return fullPath, ext
 		}
 	}
 	return "", ""

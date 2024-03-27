@@ -1,0 +1,30 @@
+<h2>Handling Related Content in Markdown Files</h2>
+<p>Our platform supports associating related content with Markdown documents through the use of a <code>relation</code> field within the document's front matter. This allows for the seamless integration of additional resources, enhancing the richness and utility of your content.</p>
+
+<h3>Specifying Related Content</h3>
+<p>To specify related content, include the <code>relation</code> field in the YAML front matter of your Markdown document. The related content must be located within the same directory as the referring document. Here’s how you can specify a related HTML file:</p>
+<pre><code>---
+relation: _additionalInfo.html
+---
+</code></pre>
+
+<h3>Naming Conventions and Access</h3>
+<ul>
+  <li>Files named with a leading underscore (<code>_</code>) are treated specially. They are meant to be included as part of another document and are not directly accessible via a URL. This convention helps in organizing your content and keeping auxiliary files hidden.</li>
+  <li>If you wish for the related file to be accessible as standalone content, do not prefix the filename with <code>_</code>. This makes the file directly accessible through its URL, allowing it to serve as both related content and a standalone resource.</li>
+</ul>
+
+<h3>Examples</h3>
+<h4>Including an HTML File</h4>
+<p>For Markdown documents that require supplementary HTML content to be displayed alongside the Markdown-rendered content, specify the HTML file using the <code>relation</code> field. The content of this file will be rendered in place when the Markdown document is accessed. Remember, if the filename starts with <code>_</code>, the content is intended for inclusion and not direct access:</p>
+<pre><code>---
+relation: _contactForm.html
+---
+</code></pre>
+
+<h4>Making Related Content Accessible</h4>
+<p>If you have a related document that should also be accessible on its own, simply ensure it does not begin with <code>_</code>. This is useful for supplementary guides, forms, or any content that serves a dual purpose—both as standalone and as related content.</p>
+<pre><code>---
+relation: termsOfService.html
+---
+</code></pre>
