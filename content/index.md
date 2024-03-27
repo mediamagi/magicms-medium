@@ -47,7 +47,7 @@ To set up this project locally and start contributing, follow these steps:
 1. **Clone the repository** to your local machine.
 
     ```bash
-    git clone <repository-url>
+    git clone git@github.com:mediamagi/magicms-medium.git
     ```
 
 2. **Install Golang** if it's not already installed on your system.
