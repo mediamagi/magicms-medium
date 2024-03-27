@@ -3,7 +3,8 @@ title: Streamline Website Creation - Golang, Markdown, Tailwind, Alpine.js and T
 description: Welcome to our GitHub repository, where we're bringing simplicity and efficiency back to web development.
 ---
 
-# 🚀 Streamline Website Creation: Golang, Markdown, Tailwind, Alpine.js, Templ – Inspired by Nuxt Content
+# 🚀 Streamline Website Creation: Golang, Markdown, Tailwind, Alpine.js, Templ 
+## - Inspired by Nuxt Content
 
 Where we're bringing simplicity and efficiency back to web development. Our journey began with a realization: creating simple web pages shouldn't require complex solutions. This project is our exploration into making web development straightforward, focusing on static sites with minimal updates.
 
